@@ -1,0 +1,13 @@
+<p>userdetails works!</p>
+<table border="1">
+    <tr><td>id</td>
+    <td>name</td>
+    <td>phoneno</td></tr>
+    <tr *ngFor="let list of users">
+        <td>{{list.id}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.phoneno}}</td>
+        <td><button [routerLink]="['/edit',list.id]">Edit</button></td>
+        <td><button [routerLink]="['/details',list.name]">Details</button></td>
+    </tr>
+</table>
