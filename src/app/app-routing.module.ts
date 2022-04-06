@@ -1,33 +1,19 @@
-import { Component, NgModule } from '@angular/core';
+
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './details/details.component';
-import { EditComponent } from './edit/edit.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:UserdetailsComponent,
+    path:'login',
+    component:LoginComponent
   },
   {
-    path:"userdetails",
-    component:UserdetailsComponent,
-  },
-  {
-    path:"edit/:id",
-    component:EditComponent,
-  },
-  {
-    path:"details/:id",
-    component:DetailsComponent,
-  },
-  {
-    path:'userdetails' , loadChildren: () => import('./userdetails/userdetails.module').then(m => m.UserdetailsModule)
-  },
-  {
-    path:"**",
-    component:PagenotfoundComponent,
+    path:'home',
+    component:HomeComponent,
+    canActivate:[AuthGuard]
   }
 ];
 
